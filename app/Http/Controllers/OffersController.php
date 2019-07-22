@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Offer;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use DB;
@@ -15,6 +16,31 @@ class OffersController extends Controller
         $Offers = Offer::orderBy('id', 'desc')->paginate(5);
 
         return view('Offers')->with('Offers',$Offers);
+    }
+    public function login()
+    {
+      return view('partials.login');
+    }
+    public function login2(Request $request)
+    {
+        $name=$request->input('name');
+        $password=$request->input('password');
+
+        $data=User::where('name','=',$name);
+
+
+        if ($data)
+        {
+          $data2=User::where('password','=',$password);
+          if($data2)
+          {
+            $Offers = Offer::orderBy('id', 'desc')->paginate(5);
+
+            return view('Offers')->with('Offers',$Offers);
+          }
+        }
+  
+
     }
     public function chart()
     {

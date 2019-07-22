@@ -1,10 +1,13 @@
 <?php
 
-Route::get('/', [
-    'uses' => 'OffersController@index',
-    'as' => 'Offers.index',
-]);
+// Route::get('/', [
+//     'uses' => 'OffersController@index',
+//     'as' => 'Offers.index',
+// ]);
 
+
+Route::get('/', 'OffersController@login');
+Route::post('/logs','OffersController@login2');
 
 Route::group(['prefix' => 'Offers'], function () {
     Route::get('/chart', [
@@ -35,4 +38,7 @@ Route::group(['prefix' => 'Offers'], function () {
 
 
 });
+
+Route::get('/login', 'OffersController@login');
+Route::post('/logs','OffersController@login2');
 //Route::resource('offer','OffersController');
