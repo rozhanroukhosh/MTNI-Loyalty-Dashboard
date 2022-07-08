@@ -1,1 +1,1 @@
-MTNI dashboard which i created personal usage
+MTNI dashboard which I created for Internal team Usage
